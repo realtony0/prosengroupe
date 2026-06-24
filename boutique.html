@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PROSEN Groupe — Boutique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<nav id="nav">
+  <a href="index.html" class="logo-mark">
+    <div class="logo-bar"></div>
+    <div class="logo-text-block"><span class="logo-primary">PROSEN</span><span class="logo-secondary">GROUPE</span></div>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links-desktop">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="apropos.html">À propos</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="boutique.html" class="active">Boutique</a></li>
+      <li><a href="remboursement.html">Remboursement</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Nous contacter</a>
+    <button class="burger" id="burger" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-menu" id="navMenu">
+  <a href="index.html">Accueil</a>
+  <a href="apropos.html">À propos</a>
+  <a href="services.html">Services</a>
+  <a href="boutique.html" class="active">Boutique</a>
+  <a href="remboursement.html">Remboursement</a>
+  <a href="contact.html" class="menu-cta">Nous contacter</a>
+</div>
+
+<main>
+<div class="page-header">
+  <div class="sec-label">Notre boutique</div>
+  <h1>Boutique <span class="accent">en ligne</span></h1>
+  <p>Une sélection de produits de qualité bientôt disponible.</p>
+</div>
+
+<section class="sec">
+  <div class="boutique-box">
+    <div class="boutique-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+    </div>
+    <div class="boutique-badge">Bientôt disponible</div>
+    <h2 class="boutique-title">Notre boutique arrive<br/>très prochainement.</h2>
+    <p class="boutique-desc">Nous préparons une sélection de produits de qualité — agroalimentaires, technologiques, énergétiques et plus encore. Laissez votre e-mail pour être informé en avant-première.</p>
+    <form class="boutique-form" onsubmit="notifSubmit(event)">
+      <input type="email" placeholder="votre@email.com" required/>
+      <button type="submit">Me prévenir</button>
+    </form>
+    <p class="boutique-confirm" id="notif-confirm">Merci — vous serez informé dès l'ouverture.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="logo-mark" style="gap:9px">
+    <div class="logo-bar" style="min-height:24px;width:3px"></div>
+    <div class="logo-text-block">
+      <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.18em;color:#FAFAF8;line-height:1">PROSEN</span>
+      <span style="font-family:'Syne',sans-serif;font-weight:400;font-size:.8rem;letter-spacing:.18em;color:#C9A84C;line-height:1">GROUPE</span>
+    </div>
+  </div>
+  <div class="footer-copy">© 2025 PROSEN Groupe — Ouakam, Dakar, Sénégal</div>
+  <div class="footer-links">
+    <a href="apropos.html">À propos</a>
+    <a href="services.html">Services</a>
+    <a href="boutique.html" class="active">Boutique</a>
+    <a href="remboursement.html">Remboursement</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+<script src="nav.js"></script>
+<script>
+function notifSubmit(e){
+  e.preventDefault();
+  e.target.style.display='none';
+  document.getElementById('notif-confirm').style.display='block';
+}
+</script>
+</body>
+</html>
