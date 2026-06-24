@@ -25,7 +25,7 @@ main{flex:1}
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(11,11,13,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:.5px solid var(--bd);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
 .nav-right{display:flex;align-items:center;gap:1rem}
-.nav-cta{font-family:var(--B);font-size:.72rem;font-weight:500;letter-spacing:.06em;padding:.5rem 1.2rem;border:1px solid var(--gold);color:var(--gold);text-decoration:none;transition:all .2s}
+.nav-cta{font-family:var(--B);font-size:.72rem;font-weight:500;letter-spacing:.06em;padding:.5rem 1.2rem;border:1px solid var(--gold);color:var(--gold);text-decoration:none;transition:all .2s;white-space:nowrap;display:none}
 .nav-cta:hover{background:var(--gold);color:var(--ink)}
 .nav-links-desktop{display:none}
 .burger{width:44px;height:44px;display:flex;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:8px;border:none;background:transparent;touch-action:manipulation;-webkit-tap-highlight-color:transparent;flex-shrink:0}
@@ -143,11 +143,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(11,11,13,.96
 .stat-label{font-size:.65rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:rgba(250,250,248,.35)}
 
 /* ── HERO (accueil) ── */
-.hero{min-height:100svh;padding:80px 1.5rem 4rem;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.hero{min-height:100svh;padding:80px 1.5rem 4rem;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;overflow-x:clip}
 .hero::before{content:'';position:absolute;top:-150px;right:-150px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.08) 0%,transparent 70%);pointer-events:none}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
 .hero-inner{position:relative;z-index:1}
-.hero-title{font-family:var(--D);font-weight:800;font-size:clamp(2.8rem,12vw,4.5rem);line-height:.97;letter-spacing:-.025em;margin-bottom:1.5rem}
+.hero-title{font-family:var(--D);font-weight:800;font-size:clamp(2.2rem,10.5vw,4.5rem);line-height:.97;letter-spacing:-.025em;margin-bottom:1.5rem}
 .hero-title .accent{color:var(--gold);display:block}
 .hero-desc{font-size:.95rem;font-weight:300;line-height:1.78;color:rgba(250,250,248,.55);margin-bottom:2.2rem;max-width:520px}
 .hero-actions{display:flex;flex-direction:column;gap:.9rem}
@@ -186,6 +186,7 @@ footer{border-top:.5px solid var(--bd);padding:2rem 1.5rem;display:flex;flex-dir
 @media(min-width:1024px){
   nav{padding:1.4rem 4rem}
   .burger{display:none}
+  .nav-cta{display:block}
   .nav-links-desktop{display:flex;gap:2.2rem;list-style:none}
   .nav-links-desktop a{font-family:var(--B);font-size:.75rem;font-weight:400;letter-spacing:.09em;text-transform:uppercase;color:rgba(250,250,248,.5);text-decoration:none;transition:color .2s}
   .nav-links-desktop a:hover,.nav-links-desktop a.active{color:var(--gold)}
