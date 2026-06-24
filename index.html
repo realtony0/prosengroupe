@@ -2,49 +2,83 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>PROSEN Groupe — Accueil</title>
+<title>PROSEN Groupe — Dakar, Sénégal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
+<style>
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-25px) scale(1.06)}66%{transform:translate(-25px,20px) scale(.96)}}
+@keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.hero-orb{position:absolute;top:-120px;right:-220px;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle at 40% 40%,rgba(201,168,76,.13) 0%,rgba(201,168,76,.04) 45%,transparent 70%);animation:orbFloat 14s ease-in-out infinite;pointer-events:none;z-index:0}
+.hero-orb2{position:absolute;bottom:-220px;left:-180px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.08) 0%,transparent 65%);animation:orbFloat 18s ease-in-out infinite reverse;pointer-events:none;z-index:0}
+
+.hero-ticker{position:absolute;bottom:0;left:0;right:0;overflow:hidden;border-top:.5px solid var(--bd);z-index:2;background:rgba(11,11,13,.55);backdrop-filter:blur(6px)}
+.hero-ticker-inner{display:flex;white-space:nowrap;animation:tickerScroll 28s linear infinite}
+.hero-ticker-item{display:inline-flex;align-items:center;gap:1.6rem;padding:.6rem 2rem;font-family:var(--D);font-size:.56rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:rgba(201,168,76,.45);flex-shrink:0}
+.hero-ticker-item .dot{width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:.35;flex-shrink:0}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .72s cubic-bezier(.4,0,.2,1),transform .72s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:none}
+.rd1{transition-delay:.08s}.rd2{transition-delay:.18s}.rd3{transition-delay:.28s}.rd4{transition-delay:.38s}
+
+.about-statement{border:.5px solid var(--bd);padding:2.2rem 1.8rem 2.2rem 2.2rem;margin-bottom:2.5rem;position:relative;overflow:hidden}
+.about-statement::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--gold)}
+.about-quote{font-family:var(--D);font-size:clamp(1.15rem,4vw,1.65rem);font-weight:700;line-height:1.28;color:var(--w)}
+.about-quote span{color:var(--gold)}
+.about-src{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,250,248,.28);margin-top:.75rem}
+
+.services-band{padding:2rem 1.5rem;background:var(--ink2);border-bottom:.5px solid var(--bd);display:flex;align-items:center;justify-content:space-between;overflow:hidden;position:relative}
+.services-band::after{content:'08';position:absolute;right:1rem;font-family:var(--D);font-weight:800;font-size:7rem;line-height:1;color:rgba(201,168,76,.05);pointer-events:none;top:50%;transform:translateY(-50%);letter-spacing:.05em}
+
+.partners-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:1.5rem}
+.partner-item{border:.5px solid var(--bd);padding:.9rem 1.1rem;font-family:var(--D);font-size:.76rem;font-weight:600;color:rgba(250,250,248,.55);letter-spacing:.04em;transition:border-color .2s,color .2s}
+.partner-item:hover{border-color:var(--gold);color:var(--w)}
+</style>
 </head>
 <body>
+
 <nav id="nav">
-  <a href="index.html" class="logo-mark">
+  <a href="#accueil" class="logo-mark">
     <div class="logo-bar"></div>
     <div class="logo-text-block"><span class="logo-primary">PROSEN</span><span class="logo-secondary">GROUPE</span></div>
   </a>
   <div class="nav-right">
-    <ul class="nav-links-desktop">
-      <li><a href="index.html" class="active">Accueil</a></li>
-      <li><a href="apropos.html">À propos</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="boutique.html">Boutique</a></li>
-      <li><a href="remboursement.html">Remboursement</a></li>
+    <ul class="nav-links-desktop" id="navDesktop">
+      <li><a href="#accueil" data-section="accueil" class="active">Accueil</a></li>
+      <li><a href="#apropos" data-section="apropos">À propos</a></li>
+      <li><a href="#services" data-section="services">Services</a></li>
+      <li><a href="#boutique" data-section="boutique">Boutique</a></li>
+      <li><a href="#remboursement" data-section="remboursement">Remboursement</a></li>
     </ul>
-    <a href="contact.html" class="nav-cta">Nous contacter</a>
+    <a href="#contact" class="nav-cta">Nous contacter</a>
     <button class="burger" id="burger" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
 <div class="nav-menu" id="navMenu">
-  <a href="index.html" class="active">Accueil</a>
-  <a href="apropos.html">À propos</a>
-  <a href="services.html">Services</a>
-  <a href="boutique.html">Boutique</a>
-  <a href="remboursement.html">Remboursement</a>
-  <a href="contact.html" class="menu-cta">Nous contacter</a>
+  <a href="#accueil" data-section="accueil" class="active">Accueil</a>
+  <a href="#apropos" data-section="apropos">À propos</a>
+  <a href="#services" data-section="services">Services</a>
+  <a href="#boutique" data-section="boutique">Boutique</a>
+  <a href="#remboursement" data-section="remboursement">Remboursement</a>
+  <a href="#contact" class="menu-cta">Nous contacter</a>
 </div>
 
 <main>
-<section class="hero" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&q=80&auto=format&fit=crop');background-size:cover;background-position:center">
-  <div style="position:absolute;inset:0;background:rgba(11,11,13,.82);z-index:0"></div>
+
+<!-- ── ACCUEIL ── -->
+<section id="accueil" class="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-orb2"></div>
   <div class="hero-grid"></div>
   <div class="hero-left hero-inner">
     <h1 class="hero-title fade-up d1">Construire<span class="accent">l'avenir</span>ensemble.</h1>
     <p class="hero-desc fade-up d2">Société multisectorielle engagée dans le développement économique du Sénégal et de l'Afrique, à travers l'innovation, la qualité et l'excellence.</p>
     <div class="hero-actions fade-up d3">
-      <a href="services.html" class="btn-primary">Nos services</a>
-      <a href="apropos.html" class="btn-ghost">Notre vision →</a>
+      <a href="#services" class="btn-primary">Nos services</a>
+      <a href="#apropos" class="btn-ghost">Notre vision →</a>
     </div>
     <div class="hero-logo-display" id="heroLogoMobile">
       <div class="hero-logo-bar"></div>
@@ -65,67 +99,314 @@
       </div>
     </div>
   </div>
+  <div class="hero-ticker">
+    <div class="hero-ticker-inner">
+      <span class="hero-ticker-item">Excellence <span class="dot"></span></span>
+      <span class="hero-ticker-item">Innovation <span class="dot"></span></span>
+      <span class="hero-ticker-item">Intégrité <span class="dot"></span></span>
+      <span class="hero-ticker-item">Commerce général <span class="dot"></span></span>
+      <span class="hero-ticker-item">BTP &amp; Génie Civil <span class="dot"></span></span>
+      <span class="hero-ticker-item">Agroalimentaire <span class="dot"></span></span>
+      <span class="hero-ticker-item">Technologies &amp; Innovation <span class="dot"></span></span>
+      <span class="hero-ticker-item">Transport &amp; Logistique <span class="dot"></span></span>
+      <span class="hero-ticker-item">Import – Export <span class="dot"></span></span>
+      <span class="hero-ticker-item">Formation &amp; Conseil <span class="dot"></span></span>
+      <span class="hero-ticker-item">Énergie &amp; Environnement <span class="dot"></span></span>
+      <span class="hero-ticker-item">Excellence <span class="dot"></span></span>
+      <span class="hero-ticker-item">Innovation <span class="dot"></span></span>
+      <span class="hero-ticker-item">Intégrité <span class="dot"></span></span>
+      <span class="hero-ticker-item">Commerce général <span class="dot"></span></span>
+      <span class="hero-ticker-item">BTP &amp; Génie Civil <span class="dot"></span></span>
+      <span class="hero-ticker-item">Agroalimentaire <span class="dot"></span></span>
+      <span class="hero-ticker-item">Technologies &amp; Innovation <span class="dot"></span></span>
+      <span class="hero-ticker-item">Transport &amp; Logistique <span class="dot"></span></span>
+      <span class="hero-ticker-item">Import – Export <span class="dot"></span></span>
+      <span class="hero-ticker-item">Formation &amp; Conseil <span class="dot"></span></span>
+      <span class="hero-ticker-item">Énergie &amp; Environnement <span class="dot"></span></span>
+    </div>
+  </div>
 </section>
 
-<div class="stats-bar">
-  <div class="stat-item"><div class="stat-num">8+</div><div class="stat-label">Secteurs d'activité</div></div>
-  <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Engagement client</div></div>
+<!-- ── STATS ── -->
+<div class="stats-bar" id="statsBar">
+  <div class="stat-item"><div class="stat-num" data-count="8" data-suffix="+">8+</div><div class="stat-label">Secteurs d'activité</div></div>
+  <div class="stat-item"><div class="stat-num" data-count="100" data-suffix="%">100%</div><div class="stat-label">Engagement client</div></div>
   <div class="stat-item"><div class="stat-num">SN</div><div class="stat-label">Ancré au Sénégal</div></div>
   <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Ambition internationale</div></div>
 </div>
 
-<section class="sec" style="background:var(--ink2)">
-  <div class="sec-label">Ce que nous faisons</div>
-  <h2 class="sec-title">Nos domaines d'expertise</h2>
-  <p class="sec-sub" style="margin-bottom:2rem">Commerce général, Agroalimentaire, BTP, Technologies, Logistique, Communication et plus.</p>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-num">01</div>
-      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-      <div class="service-name">Technologies &amp; Innovation</div>
+<!-- ── SERVICES ── -->
+<section id="services" style="background:var(--ink2)">
+  <div class="services-band reveal">
+    <div>
+      <div class="sec-label" style="margin-bottom:.5rem">Ce que nous faisons</div>
+      <div style="font-family:var(--D);font-weight:700;font-size:clamp(1.3rem,4.5vw,2rem);color:var(--w);line-height:1.05;letter-spacing:-.015em">Nos domaines<br/>d'expertise</div>
     </div>
-    <div class="service-card">
-      <div class="service-num">02</div>
-      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-      <div class="service-name">Communication &amp; Marketing</div>
+    <div style="font-family:var(--D);font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,168,76,.35);position:relative;z-index:1">Dakar · Sénégal</div>
+  </div>
+  <div style="padding:0">
+    <div class="services-grid reveal rd1">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <div class="service-name">Technologies &amp; Innovation</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="service-name">Communication &amp; Marketing</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="service-name">BTP &amp; Génie Civil</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+        <div class="service-name">Import – Export</div>
+      </div>
     </div>
-    <div class="service-card">
-      <div class="service-num">03</div>
-      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-      <div class="service-name">BTP &amp; Génie Civil</div>
-    </div>
-    <div class="service-card">
-      <div class="service-num">04</div>
-      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-      <div class="service-name">Import – Export</div>
+    <div class="services-row2 reveal rd2">
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <div class="service-name">Transport &amp; Logistique</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="service-name">Agroalimentaire</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">07</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+        <div class="service-name">Énergie &amp; Environnement</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">08</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        <div class="service-name">Formation &amp; Conseil</div>
+      </div>
     </div>
   </div>
-  <div class="services-row2">
-    <div class="service-card">
-      <div class="service-num">05</div>
-      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-      <div class="service-name">Transport &amp; Logistique</div>
+
+  <div class="sec" style="padding-top:3rem;background:var(--ink2)">
+    <div class="sec-label reveal">Secteurs</div>
+    <h2 class="sec-title reveal rd1">Présent dans tous les secteurs clés</h2>
+    <p class="sec-sub reveal rd2" style="margin-bottom:2rem">Une présence multisectorielle pour répondre à chaque besoin.</p>
+    <div class="secteurs-grid reveal rd3">
+      <div class="secteur-card">
+        <div class="secteur-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+        <div><div class="secteur-name">Commerce général</div><div class="secteur-desc">Produits agroalimentaires, technologiques, industriels — locaux et importés.</div></div>
+      </div>
+      <div class="secteur-card">
+        <div class="secteur-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+        <div><div class="secteur-name">BTP &amp; Construction</div><div class="secteur-desc">Construction, rénovation, aménagement et infrastructures civiles.</div></div>
+      </div>
+      <div class="secteur-card">
+        <div class="secteur-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div><div class="secteur-name">Communication</div><div class="secteur-desc">Branding, marketing digital et accompagnement commercial.</div></div>
+      </div>
+      <div class="secteur-card">
+        <div class="secteur-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+        <div><div class="secteur-name">Import – Export</div><div class="secteur-desc">Commerce international et accompagnement des échanges.</div></div>
+      </div>
+      <div class="secteur-card">
+        <div class="secteur-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+        <div><div class="secteur-name">Énergie &amp; Environnement</div><div class="secteur-desc">Solutions énergétiques et services liés au développement durable.</div></div>
+      </div>
+      <div class="secteur-card">
+        <div class="secteur-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        <div><div class="secteur-name">Formation &amp; Conseil</div><div class="secteur-desc">Accompagnement professionnel et conseil stratégique.</div></div>
+      </div>
     </div>
-    <div class="service-card">
-      <div class="service-num">06</div>
-      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <div class="service-name">Agroalimentaire</div>
-    </div>
-    <div class="service-card">
-      <div class="service-num">07</div>
-      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
-      <div class="service-name">Énergie &amp; Environnement</div>
-    </div>
-    <div class="service-card">
-      <div class="service-num">08</div>
-      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-      <div class="service-name">Formation &amp; Conseil</div>
-    </div>
-  </div>
-  <div style="margin-top:2rem;text-align:right">
-    <a href="services.html" class="btn-ghost" style="display:inline-flex">Voir tous les services →</a>
   </div>
 </section>
+
+<!-- ── À PROPOS ── -->
+<section id="apropos" class="sec">
+  <div class="sec-label reveal">Qui sommes-nous</div>
+  <h2 class="sec-title reveal rd1">Une vision <span style="color:var(--gold)">ambitieuse</span><br/>pour le Sénégal</h2>
+  <p class="sec-sub reveal rd2" style="margin-bottom:2rem">Société à vocation multisectorielle créée pour contribuer activement au développement économique du Sénégal et de l'international.</p>
+
+  <div class="about-statement reveal rd2">
+    <div class="about-quote">Bâtir un groupe fort, moderne et <span>compétitif</span>.</div>
+    <div class="about-src">— Vision PROSEN Groupe</div>
+  </div>
+
+  <div class="sec-label reveal">Notre mission</div>
+  <h3 style="font-family:var(--D);font-weight:700;font-size:clamp(1.2rem,4vw,1.7rem);line-height:1.1;letter-spacing:-.015em;margin-bottom:.8rem" class="reveal rd1">Ce que nous nous engageons à faire</h3>
+  <p class="sec-sub reveal rd2" style="margin-bottom:1.5rem">Fournir des solutions innovantes, accessibles et durables contribuant au développement économique et social.</p>
+
+  <div class="values-list">
+    <div class="value-item reveal"><span class="value-num">01</span><div><div class="value-name">Excellence</div><div class="value-desc">Qualité et performance dans chacune de nos actions.</div></div></div>
+    <div class="value-item reveal rd1"><span class="value-num">02</span><div><div class="value-name">Innovation</div><div class="value-desc">Solutions modernes adaptées aux réalités du marché.</div></div></div>
+    <div class="value-item reveal rd2"><span class="value-num">03</span><div><div class="value-name">Intégrité</div><div class="value-desc">Transparence, éthique et responsabilité dans chaque relation.</div></div></div>
+    <div class="value-item reveal rd3"><span class="value-num">04</span><div><div class="value-name">Engagement</div><div class="value-desc">Implication totale envers nos clients et partenaires.</div></div></div>
+    <div class="value-item reveal rd4"><span class="value-num">05</span><div><div class="value-name">Professionnalisme</div><div class="value-desc">Expertise et savoir-faire au service de chaque projet.</div></div></div>
+    <div class="value-item reveal"><span class="value-num">06</span><div><div class="value-name">Développement durable</div><div class="value-desc">Activités responsables contribuant au développement local.</div></div></div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--ink2);padding-top:0">
+  <div class="sec-label reveal">Nos partenaires</div>
+  <h2 class="sec-title reveal rd1">Un réseau de confiance</h2>
+  <p class="sec-sub reveal rd2" style="margin-bottom:1.5rem">Collaborations solides avec des acteurs nationaux et internationaux.</p>
+  <div class="partners-grid reveal rd3">
+    <div class="partner-item">Fournisseurs reconnus</div>
+    <div class="partner-item">Marques nationales</div>
+    <div class="partner-item">Marques internationales</div>
+    <div class="partner-item">Distributeurs</div>
+    <div class="partner-item">Entreprises partenaires</div>
+    <div class="partner-item">Institutions professionnelles</div>
+  </div>
+</section>
+
+<!-- ── BOUTIQUE ── -->
+<section id="boutique" class="sec">
+  <div class="sec-label reveal">Notre boutique</div>
+  <h2 class="sec-title reveal rd1">Boutique <span style="color:var(--gold)">en ligne</span></h2>
+  <div class="boutique-box reveal rd2">
+    <div class="boutique-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+    </div>
+    <div class="boutique-badge">Bientôt disponible</div>
+    <h3 class="boutique-title">Notre boutique arrive<br/>très prochainement.</h3>
+    <p class="boutique-desc">Nous préparons une sélection de produits de qualité — agroalimentaires, technologiques, énergétiques et plus encore. Laissez votre e-mail pour être informé en avant-première.</p>
+    <form class="boutique-form" onsubmit="notifSubmit(event)">
+      <input type="email" placeholder="votre@email.com" required/>
+      <button type="submit">Me prévenir</button>
+    </form>
+    <p class="boutique-confirm" id="notif-confirm">Merci — vous serez informé dès l'ouverture.</p>
+  </div>
+</section>
+
+<!-- ── REMBOURSEMENT ── -->
+<section id="remboursement" class="sec" style="background:var(--ink2)">
+  <div class="sec-label reveal">Transparence</div>
+  <h2 class="sec-title reveal rd1">Politique de <span style="color:var(--gold)">remboursement</span></h2>
+  <p class="sec-sub reveal rd2" style="margin-bottom:2rem">En vigueur depuis janvier 2025. Applicable à l'ensemble des produits et services de PROSEN Groupe.</p>
+
+  <div class="politique-intro reveal rd3">
+    <p>PROSEN Groupe s'engage à traiter chaque demande avec équité, rapidité et transparence. Cette politique reflète notre valeur fondamentale d'intégrité.</p>
+  </div>
+  <div class="politique-grid reveal">
+    <div class="politique-article">
+      <div class="art-num">ART. 01</div>
+      <div class="art-title">Conditions</div>
+      <div class="art-body"><ul>
+        <li>Produit défectueux ou endommagé à la livraison</li>
+        <li>Produit non conforme à la commande</li>
+        <li>Service non rendu dans les délais convenus</li>
+        <li>Erreur de facturation</li>
+      </ul></div>
+    </div>
+    <div class="politique-article">
+      <div class="art-num">ART. 02</div>
+      <div class="art-title">Délais de demande</div>
+      <div class="art-body"><ul>
+        <li>Produits physiques : 7 jours après réception</li>
+        <li>Services : 14 jours après la prestation</li>
+        <li>Au-delà : examiné au cas par cas</li>
+      </ul></div>
+    </div>
+    <div class="politique-article">
+      <div class="art-num">ART. 03</div>
+      <div class="art-title">Procédure</div>
+      <div class="art-body"><ul>
+        <li>Contactez-nous par e-mail ou téléphone</li>
+        <li>Fournissez le numéro de commande</li>
+        <li>Joignez les justificatifs nécessaires</li>
+      </ul></div>
+    </div>
+    <div class="politique-article">
+      <div class="art-num">ART. 04</div>
+      <div class="art-title">Traitement</div>
+      <div class="art-body"><ul>
+        <li>Réponse sous 5 à 10 jours ouvrables</li>
+        <li>Remboursement via le mode de paiement initial</li>
+        <li>Échange ou avoir possible selon accord</li>
+      </ul></div>
+    </div>
+    <div class="politique-article">
+      <div class="art-num">ART. 05</div>
+      <div class="art-title">Cas non éligibles</div>
+      <div class="art-body"><ul>
+        <li>Produits sans emballage d'origine</li>
+        <li>Services validés et pleinement exécutés</li>
+        <li>Commandes personnalisées (sauf défaut)</li>
+        <li>Demandes hors délai sans motif valable</li>
+      </ul></div>
+    </div>
+    <div class="politique-article">
+      <div class="art-num">ART. 06</div>
+      <div class="art-title">Échange &amp; avoir</div>
+      <div class="art-body">
+        <p>En lieu d'un remboursement, PROSEN Groupe peut proposer un échange ou un avoir sur une prochaine commande, avec accord du client.</p>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:2.5rem;border-left:2px solid var(--gold);padding:.8rem 1.2rem" class="reveal">
+    <p style="font-size:.78rem;font-weight:300;color:rgba(250,250,248,.45);line-height:1.72">
+      Pour toute question : <a href="mailto:prosengroupe@gmail.com" style="color:var(--gold);text-decoration:none">prosengroupe@gmail.com</a> · <a href="tel:+221786318941" style="color:var(--gold);text-decoration:none">+221 78 631 89 41</a>
+    </p>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact" class="sec">
+  <div class="sec-label reveal">Nous rejoindre</div>
+  <h2 class="sec-title reveal rd1">Travaillons <span style="color:var(--gold)">ensemble</span></h2>
+  <p class="sec-sub reveal rd2" style="margin-bottom:2.5rem">Particuliers, entreprises ou institutions — nous sommes à votre écoute.</p>
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="sec-label" style="margin-bottom:1rem">Coordonnées</div>
+      <div class="contact-detail">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="contact-key">Adresse</div><div class="contact-val">Ouakam, à côté de la Maison des Jeunes — Dakar</div></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div><div class="contact-key">Téléphone / WhatsApp</div><div class="contact-val"><a href="tel:+221786318941">+221 78 631 89 41</a> · <a href="tel:+221711567428">+221 71 156 74 28</a></div></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+        <div><div class="contact-key">Fixe société</div><div class="contact-val"><a href="tel:+221338155044">+221 33 815 50 44</a></div></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="contact-key">E-mail</div><div class="contact-val"><a href="mailto:prosengroupe@gmail.com">prosengroupe@gmail.com</a></div></div>
+      </div>
+    </div>
+    <div class="reveal rd2">
+      <div class="sec-label" style="margin-bottom:1rem">Formulaire</div>
+      <div class="form-group"><label>Prénom</label><input type="text" placeholder="Votre prénom" autocomplete="given-name"/></div>
+      <div class="form-group"><label>Nom</label><input type="text" placeholder="Votre nom" autocomplete="family-name"/></div>
+      <div class="form-group"><label>E-mail</label><input type="email" placeholder="votre@email.com" autocomplete="email"/></div>
+      <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="+221 XX XXX XX XX" autocomplete="tel"/></div>
+      <div class="form-group">
+        <label>Objet</label>
+        <select>
+          <option value="" disabled selected>Sélectionnez</option>
+          <option>Partenariat commercial</option>
+          <option>Demande de devis</option>
+          <option>Renseignements</option>
+          <option>Remboursement</option>
+          <option>Recrutement</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Message</label><textarea placeholder="Décrivez votre demande…"></textarea></div>
+      <button class="form-submit" onclick="handleSubmit(event)">Envoyer →</button>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer>
@@ -138,21 +419,113 @@
   </div>
   <div class="footer-copy">© 2025 PROSEN Groupe — Ouakam, Dakar, Sénégal</div>
   <div class="footer-links">
-    <a href="apropos.html">À propos</a>
-    <a href="services.html">Services</a>
-    <a href="boutique.html">Boutique</a>
-    <a href="remboursement.html">Remboursement</a>
-    <a href="contact.html">Contact</a>
+    <a href="#apropos">À propos</a>
+    <a href="#services">Services</a>
+    <a href="#boutique">Boutique</a>
+    <a href="#remboursement">Remboursement</a>
+    <a href="#contact">Contact</a>
   </div>
 </footer>
-<script src="nav.js"></script>
+
 <script>
-function handleResize(){
-  const d=window.innerWidth>=1024;
-  document.getElementById('heroLogoMobile').style.display=d?'none':'flex';
-  document.getElementById('heroLogoDesktop').style.display=d?'flex':'none';
+/* ── NAV ── */
+const burger = document.getElementById('burger');
+const menu = document.getElementById('navMenu');
+const nav = document.getElementById('nav');
+
+function toggleMenu(e){
+  e.preventDefault();e.stopPropagation();
+  const open = menu.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
 }
-handleResize();window.addEventListener('resize',handleResize);
+burger.addEventListener('click', toggleMenu);
+burger.addEventListener('touchend', toggleMenu, {passive:false});
+
+menu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    menu.classList.remove('open');
+    burger.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+/* ── ACTIVE NAV ON SCROLL ── */
+const sections = ['accueil','services','apropos','boutique','remboursement','contact'];
+function updateActiveNav(){
+  const scrollY = window.scrollY + 120;
+  let active = 'accueil';
+  for(const id of sections){
+    const el = document.getElementById(id);
+    if(el && el.offsetTop <= scrollY) active = id;
+  }
+  document.querySelectorAll('[data-section]').forEach(a => {
+    a.classList.toggle('active', a.dataset.section === active);
+  });
+}
+
+window.addEventListener('scroll', () => {
+  nav.style.boxShadow = window.scrollY > 10 ? '0 2px 28px rgba(0,0,0,.4)' : '';
+  updateActiveNav();
+}, {passive:true});
+
+/* ── HERO LOGO TOGGLE ── */
+function handleResize(){
+  const d = window.innerWidth >= 1024;
+  document.getElementById('heroLogoMobile').style.display = d ? 'none' : 'flex';
+  document.getElementById('heroLogoDesktop').style.display = d ? 'flex' : 'none';
+}
+handleResize();
+window.addEventListener('resize', handleResize);
+
+/* ── SCROLL REVEAL ── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+  });
+}, {threshold: 0.12});
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ── STATS COUNTER ── */
+let statsDone = false;
+const statsObserver = new IntersectionObserver((entries) => {
+  if(entries[0].isIntersecting && !statsDone){
+    statsDone = true;
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = parseInt(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      let current = 0;
+      const step = Math.max(1, Math.ceil(target / 40));
+      const interval = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = current + suffix;
+        if(current >= target) clearInterval(interval);
+      }, 28);
+    });
+  }
+}, {threshold: 0.5});
+const statsBar = document.getElementById('statsBar');
+if(statsBar) statsObserver.observe(statsBar);
+
+/* ── BOUTIQUE FORM ── */
+function notifSubmit(e){
+  e.preventDefault();
+  e.target.style.display = 'none';
+  document.getElementById('notif-confirm').style.display = 'block';
+}
+
+/* ── CONTACT FORM ── */
+function handleSubmit(e){
+  e.preventDefault();
+  const prenom = document.querySelector('input[autocomplete="given-name"]').value;
+  const nom = document.querySelector('input[autocomplete="family-name"]').value;
+  const email = document.querySelector('input[type="email"]').value;
+  const tel = document.querySelector('input[type="tel"]').value;
+  const objet = document.querySelector('select').value || 'Contact';
+  const msg = document.querySelector('textarea').value;
+  const body = `Prénom: ${prenom}\nNom: ${nom}\nEmail: ${email}\nTél: ${tel}\n\n${msg}`;
+  window.location.href = `mailto:prosengroupe@gmail.com?subject=${encodeURIComponent(objet+' — '+prenom+' '+nom)}&body=${encodeURIComponent(body)}`;
+}
 </script>
 </body>
 </html>
